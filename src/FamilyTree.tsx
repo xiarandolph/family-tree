@@ -15,8 +15,8 @@ const data: Node = {"name": "A", "children": [{"name": "B"}, {"name": "B1", "chi
 
 function FamilyTree() {
   // TODO: generate search tree for hierarchy
-  // const hier = hierarchy(data, d => d.children);
-  // console.log(hier);
+  const hier = hierarchy(data, d => d.children);
+  console.log(hier);
 
   return (
     <div className="FamilyTree">
@@ -25,8 +25,16 @@ function FamilyTree() {
       </div>
       <div className="View">
         <Zoom<SVGSVGElement>
-          width={10}
-          height={10}
+          width={innerWidth}
+          height={innerHeight}
+          initialTransformMatrix={{
+            scaleX: 1,
+            scaleY: 1,
+            translateX: innerWidth/2,
+            translateY: 50,
+            skewX: 0,
+            skewY: 0,
+          }}
         >
           {zoom => (
             <svg
@@ -34,8 +42,8 @@ function FamilyTree() {
               ref={zoom.containerRef}
             >
               <rect
-                width={100}
-                height={100}
+                width={innerWidth}
+                height={innerHeight}
                 fill="transparent"
                 onTouchStart={zoom.dragStart}
                 onTouchMove={zoom.dragMove}
@@ -53,8 +61,7 @@ function FamilyTree() {
               />
               <Group transform={zoom.toString()}>
                 <Tree
-                  root={hierarchy(data, d => d.children)}
-                  // size={[width, height]}
+                  root={hier}
                   nodeSize={[50, 50]}
                   separation={() => 1}
                 >
