@@ -2,8 +2,31 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	height: 100%;
+	overflow-y: hidden;
 }
 
 .Search {
 	text-align: center;
+	height: 5em;
+}
+
+.View {
+	flex-grow: 1;
+	width: 100%;
+}
+
+svg {
+	height: 100%;
+	width: 100%;
+}
+
+svg text {
+	-webkit-user-select: none;
+		 -moz-user-select: none;
+			-ms-user-select: none;
+					user-select: none;
+}
+svg text::selection {
+	background: none;
 }
