@@ -1,0 +1,9 @@
+.FamilyTree {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.Search {
+	text-align: center;
+}
