@@ -91,7 +91,16 @@ function FamilyTree() {
                               fill="#272b4d"
                               rx={node.data.children ? 0 : 10}
                               onClick={() => {
-                                console.log(node);
+                                const scaleX = 1.2;
+                                const scaleY = 1.2;
+                                zoom.setTransformMatrix({
+                                  scaleX: scaleX,
+                                  scaleY: scaleY,
+                                  translateX: -scaleX*node.x + innerWidth / 2,
+                                  translateY: -scaleY*node.y + innerHeight / 2,
+                                  skewX: 0,
+                                  skewY: 0,
+                                });
                               }}
                             />
                             <text
