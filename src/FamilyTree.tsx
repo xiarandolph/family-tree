@@ -3,8 +3,8 @@ import { Group } from "@visx/group";
 import { hierarchy, Tree } from "@visx/hierarchy";
 import { LinkVerticalStep } from "@visx/shape";
 import { Zoom } from "@visx/zoom";
-import { localPoint } from "@visx/event";
 import "./FamilyTree.css";
+import { ParentSize } from "@visx/responsive";
 
 interface Node {
   name: string;
@@ -16,22 +16,18 @@ const data: Node = {"name": "A", "children": [{"name": "B"}, {"name": "B1", "chi
 function FamilyTree() {
   // TODO: generate search tree for hierarchy
   const hier = hierarchy(data, d => d.children);
-  console.log(hier);
 
   return (
     <div className="FamilyTree">
-      <div className="Search">
-        A
-      </div>
-      <div className="View">
-        <Zoom<SVGSVGElement>
-          width={innerWidth}
-          height={innerHeight}
+      <ParentSize>
+        {parent => (<Zoom<SVGSVGElement>
+          width={parent.width}
+          height={parent.height}
           initialTransformMatrix={{
-            scaleX: 1,
-            scaleY: 1,
-            translateX: innerWidth/2,
-            translateY: 50,
+            scaleX: 1.2,
+            scaleY: 1.2,
+            translateX: (parent.width > 0 ? parent.width : innerWidth)/2,
+            translateY: (parent.height > 0 ? parent.height : innerHeight)/2,
             skewX: 0,
             skewY: 0,
           }}
@@ -41,24 +37,6 @@ function FamilyTree() {
               style={{ cursor: zoom.isDragging ? "grabbing" : "grab", touchAction: "none" }}
               ref={zoom.containerRef}
             >
-              <rect
-                width={innerWidth}
-                height={innerHeight}
-                fill="transparent"
-                onTouchStart={zoom.dragStart}
-                onTouchMove={zoom.dragMove}
-                onTouchEnd={zoom.dragEnd}
-                onMouseDown={zoom.dragStart}
-                onMouseMove={zoom.dragMove}
-                onMouseUp={zoom.dragEnd}
-                onMouseLeave={() => {
-                  if (zoom.isDragging) zoom.dragEnd();
-                }}
-                onDoubleClick={(event) => {
-                  const point = localPoint(event) || { x: 0, y: 0 };
-                  zoom.scale({ scaleX: 1.1, scaleY: 1.1, point });
-                }}
-              />
               <Group transform={zoom.toString()}>
                 <Tree
                   root={hier}
@@ -77,17 +55,17 @@ function FamilyTree() {
                           fill="none"
                         />
                       ))}
-  
+    
                       {tree.descendants().map((node, key) => {
-                        const width = 40;
-                        const height = 20;
+                        const rectWidth = 40;
+                        const rectHeight = 20;
                         return (
                           <Group top={node.y} left={node.x} key={key}>
                             <rect
-                              height={height}
-                              width={width}
-                              y={-height / 2}
-                              x={-width / 2}
+                              height={rectHeight}
+                              width={rectWidth}
+                              y={-rectHeight / 2}
+                              x={-rectWidth / 2}
                               fill="#272b4d"
                               rx={node.data.children ? 0 : 10}
                               onClick={() => {
@@ -96,8 +74,8 @@ function FamilyTree() {
                                 zoom.setTransformMatrix({
                                   scaleX: scaleX,
                                   scaleY: scaleY,
-                                  translateX: -scaleX*node.x + innerWidth / 2,
-                                  translateY: -scaleY*node.y + innerHeight / 2,
+                                  translateX: -scaleX*node.x + parent.width/2,
+                                  translateY: -scaleY*node.y + parent.height/2,
                                   skewX: 0,
                                   skewY: 0,
                                 });
@@ -120,14 +98,11 @@ function FamilyTree() {
                   )}
                 </Tree>
               </Group>
-  
             </svg>
           )}
-        </Zoom>
-      </div>
-      
-      
-      
+        </Zoom>)
+        }
+      </ParentSize>
     </div>
   );
 }

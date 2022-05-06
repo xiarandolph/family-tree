@@ -1,17 +1,6 @@
 .FamilyTree {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	height: 100%;
-}
-
-.Search {
-	text-align: center;
-}
-
-.View {
-	flex-grow: 1;
 	width: 100%;
+	height: 100%;
 }
 
 svg {
