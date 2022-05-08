@@ -3,6 +3,7 @@ import { hierarchy } from "@visx/hierarchy";
 import FamilyTree, { Node, UpdateZoomFunction } from "./FamilyTree";
 import { HierarchyNode } from "@visx/hierarchy/lib/types";
 import "./App.css";
+import Sidebar from "./Sidebar";
 
 function App() {
   const root = hierarchy(data, d => d.children);
@@ -16,13 +17,13 @@ function App() {
 
   return (
     <div className="App">
-      <div className="Menu sidebar">
-        Menu
-      </div>
+      <Sidebar name="Menu">
+        <div></div>
+      </Sidebar>
       <FamilyTree root={root} setSelected={setSelected} updateZoom={updateZoom}></FamilyTree>
-      <div className="Details sidebar">
-        Details
-      </div>
+      <Sidebar name="Details" right>
+        <div></div>
+      </Sidebar>
     </div>
   );
 }
