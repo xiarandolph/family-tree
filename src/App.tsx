@@ -4,6 +4,7 @@ import FamilyTree, { Node, UpdateZoomFunction } from "./FamilyTree";
 import { HierarchyNode } from "@visx/hierarchy/lib/types";
 import "./App.css";
 import Sidebar from "./Sidebar";
+import Menu from "./Menu";
 
 function App() {
   const root = hierarchy(data, d => d.children);
@@ -15,13 +16,21 @@ function App() {
     updateZoom.current?.(selected);
   };
 
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [detailsOpen, setDetailsOpen] = useState(false);
+
   return (
     <div className="App">
-      <Sidebar name="Menu">
-        <div></div>
-      </Sidebar>
       <FamilyTree root={root} setSelected={setSelected} updateZoom={updateZoom}></FamilyTree>
-      <Sidebar name="Details" right>
+
+      <button className="Overlay" onClick={() => setMenuOpen(true)} style={{margin: "10px"}}> Menu </button>
+      <button className="Overlay Right" onClick={() => setDetailsOpen(true)} style={{margin: "10px"}}> Details </button>
+      
+      <Sidebar open={menuOpen} onClose={()=>setMenuOpen(false)} name="Menu">
+        <Menu root={root}></Menu>
+      </Sidebar>
+
+      <Sidebar open={detailsOpen} onClose={()=>setDetailsOpen(false)} name="Details" right>
         <div></div>
       </Sidebar>
     </div>

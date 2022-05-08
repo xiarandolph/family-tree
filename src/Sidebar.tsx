@@ -2,21 +2,20 @@ import React, { useState } from "react";
 import "./Sidebar.css";
 
 export interface SidebarProps {
+  open: boolean;
   name: string;
   right?: boolean;
+  onClose?: () => void;
   children: React.ReactNode;
 }
 
-function Sidebar({name, right, children}: SidebarProps) {
-  const [open, setOpen] = useState(false);
-
+function Sidebar({open, name, right, onClose, children}: SidebarProps) {
   return (
     <div className={right ? "Right" : ""}>
-      <button className="Overlay" onClick={() => setOpen(true)} style={{margin: "10px"}}> {name} </button>
       <div className={`Overlay Sidebar ${open ? "Sidebar-open": ""}`}>
         <div className="Sidebar-header">
           <span> {name} </span>
-          <button onClick={() => setOpen(false)}>X</button>
+          <button onClick={onClose}>X</button>
         </div>
         {children}
       </div>

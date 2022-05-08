@@ -4,6 +4,7 @@
   "homepage": "https://xiarandolph.github.io/family-tree",
   "private": true,
   "dependencies": {
+    "@blueprintjs/core": "^4.3.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
