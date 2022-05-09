@@ -1,13 +1,21 @@
 {
   "files": {
-    "main.css": "/family-tree/static/css/main.dcc28f6f.css",
-    "main.js": "/family-tree/static/js/main.3d0e6201.js",
+    "main.css": "/family-tree/static/css/main.a9c52271.css",
+    "main.js": "/family-tree/static/js/main.1d660c87.js",
+    "static/media/blueprint-icons-20.eot?": "/family-tree/static/media/blueprint-icons-20.7c675118c62235e8ba85.eot",
+    "static/media/blueprint-icons-20.ttf?": "/family-tree/static/media/blueprint-icons-20.58cecdd9d530e9748708.ttf",
+    "static/media/blueprint-icons-16.eot?": "/family-tree/static/media/blueprint-icons-16.eeaaf48f3aa9749d8399.eot",
+    "static/media/blueprint-icons-16.ttf?": "/family-tree/static/media/blueprint-icons-16.8dad11908ed3e5e9e47a.ttf",
+    "static/media/blueprint-icons-20.woff?": "/family-tree/static/media/blueprint-icons-20.37c48d148164e6a1b9b1.woff",
+    "static/media/blueprint-icons-16.woff?": "/family-tree/static/media/blueprint-icons-16.bdd01e08b240fc397e5a.woff",
+    "static/media/blueprint-icons-20.woff2?": "/family-tree/static/media/blueprint-icons-20.16fbb3eddfb5d29019ae.woff2",
+    "static/media/blueprint-icons-16.woff2?": "/family-tree/static/media/blueprint-icons-16.d59af1d43e67354fabe4.woff2",
     "index.html": "/family-tree/index.html",
-    "main.dcc28f6f.css.map": "/family-tree/static/css/main.dcc28f6f.css.map",
-    "main.3d0e6201.js.map": "/family-tree/static/js/main.3d0e6201.js.map"
+    "main.a9c52271.css.map": "/family-tree/static/css/main.a9c52271.css.map",
+    "main.1d660c87.js.map": "/family-tree/static/js/main.1d660c87.js.map"
   },
   "entrypoints": [
-    "static/css/main.dcc28f6f.css",
-    "static/js/main.3d0e6201.js"
+    "static/css/main.a9c52271.css",
+    "static/js/main.1d660c87.js"
   ]
 }
