@@ -1,15 +1,15 @@
-svg {
+.FamilyTree svg {
 	display: block;
 	height: 100%;
 	width: 100%;
 }
 
-svg text {
+.FamilyTree svg text {
 	-webkit-user-select: none;
 		 -moz-user-select: none;
 			-ms-user-select: none;
 					user-select: none;
 }
-svg text::selection {
+.FamilyTree svg text::selection {
 	background: none;
 }

@@ -2,9 +2,9 @@ import React, { useRef, useState } from "react";
 import { hierarchy } from "@visx/hierarchy";
 import FamilyTree, { Node, UpdateZoomFunction } from "./FamilyTree";
 import { HierarchyNode } from "@visx/hierarchy/lib/types";
-import "./App.css";
 import Sidebar from "./Sidebar";
 import Menu from "./Menu";
+import "./App.css";
 
 function App() {
   const root = hierarchy(data, d => d.children);
@@ -27,7 +27,10 @@ function App() {
       <button className="Overlay Right" onClick={() => setDetailsOpen(true)} style={{margin: "10px"}}> Details </button>
       
       <Sidebar open={menuOpen} onClose={()=>setMenuOpen(false)} name="Menu">
-        <Menu root={root}></Menu>
+        <Menu 
+          root={root}
+          onSelect={setSelected}
+        />
       </Sidebar>
 
       <Sidebar open={detailsOpen} onClose={()=>setDetailsOpen(false)} name="Details" right>

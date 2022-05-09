@@ -25,19 +25,19 @@
   padding: 10px;
 }
 
-.Right.Overlay, .Right .Overlay {
+.Right.Overlay {
   left: auto;
   right: 0;
 }
 
-.Right .Sidebar {
+.Right.Sidebar{
   transform: translateX(100%);
 }
 
-.Right .Sidebar-header {
+.Right.Sidebar-header{
   flex-direction: row-reverse;
 }
 
-.Sidebar-open, .Right .Sidebar-open {
+.Sidebar-open, .Right.Sidebar-open { /* second selector needed for specifity */
   transform: translateX(0%);
 }

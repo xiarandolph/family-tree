@@ -11,14 +11,12 @@ export interface SidebarProps {
 
 function Sidebar({open, name, right, onClose, children}: SidebarProps) {
   return (
-    <div className={right ? "Right" : ""}>
-      <div className={`Overlay Sidebar ${open ? "Sidebar-open": ""}`}>
-        <div className="Sidebar-header">
-          <span> {name} </span>
-          <button onClick={onClose}>X</button>
-        </div>
-        {children}
+    <div className={`Overlay Sidebar ${open ? "Sidebar-open": ""} ${right ? "Right" : ""}`}>
+      <div className={`Sidebar-header ${right ? "Right" : ""}`}>
+        <span> {name} </span>
+        <button onClick={onClose}>X</button>
       </div>
+      {children}
     </div>
   );
 }
